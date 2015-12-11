@@ -1,0 +1,39 @@
+base: /home/dkiselev
+port: 8001
+callback_url: http://localhost:8001/done
+timestamps: /home/dkiselev/web/timestamps.html
+force_dump_reload: false
+tasks: 
+  -
+    region: RU
+    drop: true
+    dump_src: "http://be.gis-lab.info/data/gazetteer/RU.json.gz"
+    dump_ts: "http://be.gis-lab.info/data/gazetteer/RU.ts"
+    timeout: 12
+  -
+    region: UA
+    dump_src: "http://be.gis-lab.info/data/gazetteer/UA.json.gz"
+    dump_ts: "http://be.gis-lab.info/data/gazetteer/UA.ts"
+    timeout: 6
+  - 
+    region: ME
+    dump_src: "http://tr1.nowtaxi.ru/dumps/ME.json.gz"
+    dump_ts: "http://tr1.nowtaxi.ru/dumps/ME.ts"
+    timeout: 1
+  - 
+    region: SR
+    dump_src: "http://tr1.nowtaxi.ru/dumps/SR.json.gz"
+    dump_ts: "http://tr1.nowtaxi.ru/dumps/SR.ts"
+    timeout: 1
+  - 
+    region: BH
+    dump_src: "http://tr1.nowtaxi.ru/dumps/BH.json.gz"
+    dump_ts: "http://tr1.nowtaxi.ru/dumps/BH.ts"
+    timeout: 1
+  - 
+    region: HR
+    dump_src: "http://tr1.nowtaxi.ru/dumps/HR.json.gz"
+    dump_ts: "http://tr1.nowtaxi.ru/dumps/HR.ts"
+    timeout: 1
+
+gazetteer_api: !include gazetteer.yaml
