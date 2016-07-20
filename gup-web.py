@@ -34,6 +34,7 @@ YAMLLoader.add_constructor('!path', YAMLLoader.path)
 class Updater(object):
     
     def __init__ (self, config=None):
+        logging.basicConfig(format='%(asctime)s %(levelname)s - %(message)s', level=logging.DEBUG)
         with open(config, 'r') as fp:
             self.config = yaml.load(fp, YAMLLoader)
             
