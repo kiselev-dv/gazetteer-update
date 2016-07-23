@@ -1,3 +1,4 @@
 url: http://localhost/api
 user: admin
 pass: admin_passwd
+pid_file: /var/run/gazetteer-update.pid
