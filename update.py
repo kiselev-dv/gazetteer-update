@@ -149,13 +149,16 @@ class Updater(object):
         prms['callback_url'] = callback
 
         r = requests.get(url, auth=credentials, params=prms)
-        answer = r.json()
-        task_state = str(answer['state']);
-        logging.info('Task submission state: %s', task_state);
-        if (task_state == 'submitted'):
-            logging.info('Region %s submited', region)
-            self.ImportDone = threading.Event()
-        else:
+        try:
+            answer = r.json()
+            task_state = str(answer['state']);
+            logging.info('Task submission state: %s', task_state);
+            if (task_state == 'submitted'):
+                logging.info('Region %s submited', region)
+                self.ImportDone = threading.Event()
+            else:
+                logging.warning('Region %s submission failed. GW answered: %s', region, answer)
+        except ValueError:
             logging.warning('Region %s submission failed. GW answered: %s', region, answer)
 
     def download_dump(self, task):
